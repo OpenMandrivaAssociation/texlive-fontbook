@@ -1,6 +1,6 @@
 Name:		texlive-fontbook
 Version:	23608
-Release:	1
+Release:	2
 Summary:	Generate a font book
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/xetex/latex/fontbook

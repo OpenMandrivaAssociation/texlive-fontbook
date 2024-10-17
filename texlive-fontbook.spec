@@ -3,7 +3,7 @@ Version:	23608
 Release:	2
 Summary:	Generate a font book
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/xetex/latex/fontbook
+URL:		https://www.ctan.org/tex-archive/macros/xetex/latex/fontbook
 License:	LPPL1.3
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/fontbook.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/fontbook.doc.r%{version}.tar.xz

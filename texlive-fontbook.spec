@@ -1,48 +1,24 @@
-Name:		texlive-fontbook
-Version:	23608
-Release:	2
+%global tl_name fontbook
+%global tl_revision 23608
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	0.2
+Release:	%{tl_revision}.1
 Summary:	Generate a font book
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/xetex/latex/fontbook
-License:	LPPL1.3
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/fontbook.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/fontbook.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/fontbook.source.r%{version}.tar.xz
+License:	lppl1.3
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/fontbook.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/fontbook.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/fontbook.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-The package provides a means of producing a 'book' of font
-samples (for evaluation, etc.).
+The package provides a means of producing a 'book' of font samples (for
+evaluation, etc.).
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/xelatex/fontbook/fontbook.sty
-%doc %{_texmfdistdir}/doc/xelatex/fontbook/README
-%doc %{_texmfdistdir}/doc/xelatex/fontbook/fontbook-freefonts.pdf
-%doc %{_texmfdistdir}/doc/xelatex/fontbook/fontbook-freefonts.tex
-%doc %{_texmfdistdir}/doc/xelatex/fontbook/fontbook.pdf
-#- source
-%doc %{_texmfdistdir}/source/xelatex/fontbook/fontbook.dtx
-%doc %{_texmfdistdir}/source/xelatex/fontbook/fontbook.ins
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
